@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9871a935865743d995c51b7a20bda2e5" Name="Diagram1">
+        <EntityTypeShape EntityType="BlogSystemModel.Article" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogSystemModel.ArticleToCategory" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogSystemModel.Category" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogSystemModel.Comment" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogSystemModel.User" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogSystemModel.UserAndFollowing" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="BlogSystemModel.FK__Article__Article__43D61337" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogSystemModel.FK__ArticleTo__Artic__47A6A41B" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogSystemModel.FK__Comment__Comment__4F47C5E3" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogSystemModel.FK__ArticleTo__Artic__46B27FE2" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogSystemModel.FK__Category__Catego__40F9A68C" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogSystemModel.FK__Comment__Comment__4E53A1AA" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogSystemModel.FK__UserAndFo__UserA__4A8310C6" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogSystemModel.FK__UserAndFo__UserA__4B7734FF" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

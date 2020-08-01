@@ -1,0 +1,16 @@
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\bin\Debug\BlogSystem.DAL.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\bin\Debug\BlogSystem.DAL.pdb
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\bin\Debug\BlogSystem.IDAL.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\bin\Debug\BlogSystem.Models.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\bin\Debug\EntityFramework.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\bin\Debug\BlogSystem.IDAL.pdb
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\bin\Debug\BlogSystem.Models.pdb
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\bin\Debug\BlogSystem.Models.dll.config
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\bin\Debug\EntityFramework.xml
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\obj\Debug\BlogSystem.DAL.csprojAssemblyReference.cache
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\obj\Debug\BlogSystem.DAL.csproj.CoreCompileInputs.cache
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\obj\Debug\BlogSystem.DAL.csproj.CopyComplete
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\obj\Debug\BlogSystem.DAL.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.DAL\obj\Debug\BlogSystem.DAL.pdb

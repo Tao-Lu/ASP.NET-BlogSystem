@@ -1,0 +1,93 @@
+﻿@model BlogSystem.WebUI.Models.ArticleViewModels.EditArticleViewModel
+
+@{
+    ViewBag.Title = "EditArticle";
+}
+
+<h2>EditArticle</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>EditArticleViewModel</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.HiddenFor(model => model.ArticleId, htmlAttributes: new { @class = "control-label col-md-2" })
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            @Html.TextAreaFor(model => model.Content, new { @id = "ckeditor", @class = "form-control", @row = "200" })
+            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            @*rich text editor*@
+            <script></script>
+            <script>CKEDITOR.replace("ckeditor");</script>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CategoryIds, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <ul class="categoryIds">
+                @foreach (var categoryItem in ViewBag.CategoryIds)
+                {
+                    bool contains = false;
+                    foreach (string categoryId in Model.CategoryIds)
+                    {
+                        if (categoryId == categoryItem.Id.ToString())
+                        {
+                            contains = true;
+                        }
+                    }
+
+                    if (contains)
+                    {
+                        <li style="display:inline-block; list-style: none"><input type="checkbox" checked="checked" name="CategoryIds" value="@categoryItem.Id" />@categoryItem.CategoryName</li>
+                    }
+                    else
+                    {
+                        <li style="display:inline-block; list-style: none"><input type="checkbox" name="CategoryIds" value="@categoryItem.Id" />@categoryItem.CategoryName</li>
+                    }
+                }
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ArticleList2")
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@section headers
+{
+
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+}

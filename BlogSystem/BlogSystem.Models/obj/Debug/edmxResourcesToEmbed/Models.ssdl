@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BlogSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="ArticleId" />
+    </Key>
+    <Property Name="ArticleId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ArticleCreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="ArticleIsRemoved" Type="int" Nullable="false" />
+    <Property Name="ArticleTitle" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ArticleContent" Type="text" Nullable="false" />
+    <Property Name="ArticleUserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ArticleLikeCount" Type="int" Nullable="false" />
+    <Property Name="ArticleUnlikeCount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArticleToCategory">
+    <Key>
+      <PropertyRef Name="ArticleToCategoryId" />
+    </Key>
+    <Property Name="ArticleToCategoryId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ArticleToCategoryCreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="ArticleToCategoryIsRemoved" Type="int" Nullable="false" />
+    <Property Name="ArticleToCategoryCategoryId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ArticleToCategoryArticleId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CategoryCreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="CategoryIsRemoved" Type="int" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="CategoryUserId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CommentCreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="CommentIsRemoved" Type="int" Nullable="false" />
+    <Property Name="CommentContent" Type="text" Nullable="false" />
+    <Property Name="CommentUserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CommentArticleId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserCreateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="UserIsRemoved" Type="int" Nullable="false" />
+    <Property Name="UserEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPassword" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="UserImagePath" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="UserFollowerCount" Type="int" Nullable="false" />
+    <Property Name="UserFollowingCount" Type="int" Nullable="false" />
+    <Property Name="UserBlogName" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserAndFollowing">
+    <Key>
+      <PropertyRef Name="UserAndFollowingId" />
+    </Key>
+    <Property Name="UserAndFollowingId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserAndFollowingCreateDateTime" Type="datetime" />
+    <Property Name="UserAndFollowingIsRemoved" Type="int" Nullable="false" />
+    <Property Name="UserAndFollowingUserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserAndFollowingFollowingId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Article__Article__43D61337">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="ArticleUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ArticleTo__Artic__46B27FE2">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="ArticleToCategory" Type="Self.ArticleToCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="ArticleToCategory">
+        <PropertyRef Name="ArticleToCategoryCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ArticleTo__Artic__47A6A41B">
+    <End Role="Article" Type="Self.Article" Multiplicity="1" />
+    <End Role="ArticleToCategory" Type="Self.ArticleToCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="ArticleId" />
+      </Principal>
+      <Dependent Role="ArticleToCategory">
+        <PropertyRef Name="ArticleToCategoryArticleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Category__Catego__40F9A68C">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="CategoryUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__Comment__4E53A1AA">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="CommentUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__Comment__4F47C5E3">
+    <End Role="Article" Type="Self.Article" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="ArticleId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="CommentArticleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserAndFo__UserA__4A8310C6">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserAndFollowing" Type="Self.UserAndFollowing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserAndFollowing">
+        <PropertyRef Name="UserAndFollowingUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserAndFo__UserA__4B7734FF">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserAndFollowing" Type="Self.UserAndFollowing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserAndFollowing">
+        <PropertyRef Name="UserAndFollowingFollowingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BlogSystemModelStoreContainer">
+    <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ArticleToCategory" EntityType="Self.ArticleToCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAndFollowing" EntityType="Self.UserAndFollowing" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Article__Article__43D61337" Association="Self.FK__Article__Article__43D61337">
+      <End Role="User" EntitySet="User" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ArticleTo__Artic__46B27FE2" Association="Self.FK__ArticleTo__Artic__46B27FE2">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="ArticleToCategory" EntitySet="ArticleToCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ArticleTo__Artic__47A6A41B" Association="Self.FK__ArticleTo__Artic__47A6A41B">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="ArticleToCategory" EntitySet="ArticleToCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Category__Catego__40F9A68C" Association="Self.FK__Category__Catego__40F9A68C">
+      <End Role="User" EntitySet="User" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__Comment__4E53A1AA" Association="Self.FK__Comment__Comment__4E53A1AA">
+      <End Role="User" EntitySet="User" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__Comment__4F47C5E3" Association="Self.FK__Comment__Comment__4F47C5E3">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserAndFo__UserA__4A8310C6" Association="Self.FK__UserAndFo__UserA__4A8310C6">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserAndFollowing" EntitySet="UserAndFollowing" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserAndFo__UserA__4B7734FF" Association="Self.FK__UserAndFo__UserA__4B7734FF">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserAndFollowing" EntitySet="UserAndFollowing" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

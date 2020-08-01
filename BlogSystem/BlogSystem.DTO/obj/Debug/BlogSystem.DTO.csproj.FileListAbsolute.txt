@@ -1,0 +1,6 @@
+D:\github\BlogSystem\BlogSystem\BlogSystem.DTO\bin\Debug\BlogSystem.DTO.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.DTO\bin\Debug\BlogSystem.DTO.pdb
+D:\github\BlogSystem\BlogSystem\BlogSystem.DTO\obj\Debug\BlogSystem.DTO.csprojAssemblyReference.cache
+D:\github\BlogSystem\BlogSystem\BlogSystem.DTO\obj\Debug\BlogSystem.DTO.csproj.CoreCompileInputs.cache
+D:\github\BlogSystem\BlogSystem\BlogSystem.DTO\obj\Debug\BlogSystem.DTO.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.DTO\obj\Debug\BlogSystem.DTO.pdb

@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    // user login or not
+    var loginEmail = Session["loginEmail"] == null ? Request.Cookies["loginEmail"].Value : Session["loginEmail"].ToString();
+}
+
+<h2>Index</h2>
+<h3>@loginEmail</h3>
+
+@Html.ActionLink("My Articles", "ArticleList2", "Article")  | 
+@Html.ActionLink("My Categories", "CategoryList", "Article")

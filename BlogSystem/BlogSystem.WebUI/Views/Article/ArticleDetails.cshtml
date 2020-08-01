@@ -1,0 +1,135 @@
+﻿@model BlogSystem.DTO.ArticleDTO
+
+@{
+    ViewBag.Title = "ArticleDetails";
+}
+
+<h2>ArticleDetails</h2>
+
+<div>
+    <h4>ArticleDTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Content)*@
+            @Html.Raw(Model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LikeCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LikeCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnlikeCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnlikeCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryNames)
+        </dt>
+
+        @foreach (var item in Model.CategoryNames)
+        {
+            <dd style="float:left; ">@item</dd>
+        }
+
+    </dl>
+</div>
+<p>
+    @*if only allowing one user 'like' or 'unlike' one article once,
+        two more tables are needed in DataBase to record users who like or unlike articles *@
+
+    @Html.ActionLink("Like", "Like", new { articleId = Model.Id })
+    <br />
+    @Html.ActionLink("UnLike", "UnLike", new { articleId = Model.Id })
+    <br />
+
+    @*new comment*@
+    <input type="text" name="txtComment" id="txtComment" value="" />
+    <button onclick="newComment()">new comment</button>
+
+    <br />
+    @Html.ActionLink("Edit", "EditArticle", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "ArticleList2")
+</p>
+
+@*comment list*@
+<ul>
+    @foreach (var comment in ViewBag.Comments)
+    {
+        <li>
+            <span>@comment.Content </span>
+            <br />
+            <span>@comment.Email</span>
+            <br />
+            <span>@comment.CreateDateTime</span>
+        </li>
+    }
+
+</ul>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@section headers
+{
+    <script>
+        function newComment() {
+            $.ajax({
+                url: "/Article/NewComment",
+                type: "post",
+                data: {
+                    ArticleId: '@Model.Id',
+                        Content: document.getElementById("txtComment").value
+                }
+            }).done(() => {
+                //alert("new comment added");
+                location.reload();
+            });
+            }
+    </script>
+}

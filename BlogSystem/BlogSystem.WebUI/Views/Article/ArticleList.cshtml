@@ -1,0 +1,127 @@
+﻿@model IEnumerable<BlogSystem.DTO.ArticleDTO>
+
+@{
+    ViewBag.Title = "ArticleList";
+}
+
+<h2>ArticleList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateArticle")
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Content)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LikeCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnlikeCount)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.ImagePath)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Content)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LikeCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnlikeCount)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ImagePath)
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Edit", "EditArticle", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "ArticleDetails", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+    <!-- paging -->
+    <tfoot>
+        <tr>
+            <td colspan="6">
+                <ul>
+                    @if (ViewBag.totalPages <= ViewBag.showingPages)
+                    {
+                        for (int i = 1; i <= ViewBag.totalPages; i++)
+                        {
+                            <li>
+                                @Html.ActionLink(i.ToString(), "ArticleList", new { pageIndex = i.ToString() })
+                            </li>
+                        }
+                    }
+                    else
+                    {
+                        if (ViewBag.currentPageIndex <= ViewBag.showingPages / 2)
+                        {
+                            for (int i = 1; i <= ViewBag.showingPages; i++)
+                            {
+                                <li>
+                                    @Html.ActionLink(i.ToString(), "ArticleList", new { pageIndex = i.ToString() })
+                                </li>
+                            }
+                        }
+                        else if ((ViewBag.totalPages - ViewBag.currentPageIndex) <= ViewBag.showingPages / 2)
+                        {
+                            for (int i = ViewBag.totalPages - ViewBag.showingPages + 1; i <= ViewBag.totalPages; i++)
+                            {
+                                <li>
+                                    @Html.ActionLink(i.ToString(), "ArticleList", new { pageIndex = i.ToString() })
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            for (int i = ViewBag.currentPageIndex - ViewBag.showingPages / 2; i <= ViewBag.currentPageIndex + ViewBag.showingPages / 2; i++)
+                            {
+                                <li>
+                                    @Html.ActionLink(i.ToString(), "ArticleList", new { pageIndex = i.ToString() })
+                                </li>
+                            }
+                        }
+                    }
+
+                </ul>
+            </td>
+        </tr>
+
+    </tfoot>
+
+
+</table>
+@Html.ActionLink("Back to Home", "Index", "Home")

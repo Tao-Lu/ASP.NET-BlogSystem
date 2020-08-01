@@ -1,0 +1,16 @@
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\bin\Debug\BlogSystem.IBLL.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\bin\Debug\BlogSystem.IBLL.pdb
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\bin\Debug\BlogSystem.DTO.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\bin\Debug\BlogSystem.IDAL.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\bin\Debug\BlogSystem.Models.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\bin\Debug\EntityFramework.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\bin\Debug\BlogSystem.DTO.pdb
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\bin\Debug\BlogSystem.IDAL.pdb
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\bin\Debug\BlogSystem.Models.pdb
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\bin\Debug\BlogSystem.Models.dll.config
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\bin\Debug\EntityFramework.xml
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\obj\Debug\BlogSystem.IBLL.csprojAssemblyReference.cache
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\obj\Debug\BlogSystem.IBLL.csproj.CoreCompileInputs.cache
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\obj\Debug\BlogSystem.IBLL.csproj.CopyComplete
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\obj\Debug\BlogSystem.IBLL.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.IBLL\obj\Debug\BlogSystem.IBLL.pdb

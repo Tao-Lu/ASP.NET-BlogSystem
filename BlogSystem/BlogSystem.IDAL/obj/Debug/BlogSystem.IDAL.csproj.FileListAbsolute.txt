@@ -1,0 +1,12 @@
+D:\github\BlogSystem\BlogSystem\BlogSystem.IDAL\bin\Debug\BlogSystem.IDAL.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.IDAL\bin\Debug\BlogSystem.IDAL.pdb
+D:\github\BlogSystem\BlogSystem\BlogSystem.IDAL\bin\Debug\BlogSystem.Models.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.IDAL\bin\Debug\EntityFramework.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.IDAL\bin\Debug\BlogSystem.Models.pdb
+D:\github\BlogSystem\BlogSystem\BlogSystem.IDAL\bin\Debug\BlogSystem.Models.dll.config
+D:\github\BlogSystem\BlogSystem\BlogSystem.IDAL\bin\Debug\EntityFramework.xml
+D:\github\BlogSystem\BlogSystem\BlogSystem.IDAL\obj\Debug\BlogSystem.IDAL.csprojAssemblyReference.cache
+D:\github\BlogSystem\BlogSystem\BlogSystem.IDAL\obj\Debug\BlogSystem.IDAL.csproj.CoreCompileInputs.cache
+D:\github\BlogSystem\BlogSystem\BlogSystem.IDAL\obj\Debug\BlogSystem.IDAL.csproj.CopyComplete
+D:\github\BlogSystem\BlogSystem\BlogSystem.IDAL\obj\Debug\BlogSystem.IDAL.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.IDAL\obj\Debug\BlogSystem.IDAL.pdb

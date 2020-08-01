@@ -1,0 +1,89 @@
+﻿@using Webdiyer.WebControls.Mvc
+@model Webdiyer.WebControls.Mvc.PagedList<BlogSystem.DTO.ArticleDTO>
+
+@{
+    ViewBag.Title = "ArticleList";
+}
+
+<h2>ArticleList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateArticle")
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Content)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LikeCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnlikeCount)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.ImagePath)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Content)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LikeCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnlikeCount)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ImagePath)
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Edit", "EditArticle", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "ArticleDetails", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+    <!-- paging -->
+    <tfoot>
+        <tr>
+            <td colspan="6">
+                <nav>
+                    @Html.Pager(Model, new PagerOptions { PageIndexParameterName = "pageIndex", ContainerTagName = "ul", CssClass = "pagination", CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>", DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>", PagerItemTemplate = "<li>{0}</li>", Id = "bootstrappager" })
+                </nav>
+            </td>
+        </tr>
+
+    </tfoot>
+
+
+</table>
+@Html.ActionLink("Back to Home", "Index", "Home")

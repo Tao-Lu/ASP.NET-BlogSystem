@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BlogSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="ArticleId" />
+    </Key>
+    <Property Name="ArticleId" Type="Guid" Nullable="false" />
+    <Property Name="ArticleCreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ArticleIsRemoved" Type="Int32" Nullable="false" />
+    <Property Name="ArticleTitle" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ArticleContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ArticleUserId" Type="Guid" Nullable="false" />
+    <Property Name="ArticleLikeCount" Type="Int32" Nullable="false" />
+    <Property Name="ArticleUnlikeCount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Article__Article__43D61337" FromRole="Article" ToRole="User" />
+    <NavigationProperty Name="ArticleToCategory" Relationship="Self.FK__ArticleTo__Artic__47A6A41B" FromRole="Article" ToRole="ArticleToCategory" />
+    <NavigationProperty Name="Comment" Relationship="Self.FK__Comment__Comment__4F47C5E3" FromRole="Article" ToRole="Comment" />
+  </EntityType>
+  <EntityType Name="ArticleToCategory">
+    <Key>
+      <PropertyRef Name="ArticleToCategoryId" />
+    </Key>
+    <Property Name="ArticleToCategoryId" Type="Guid" Nullable="false" />
+    <Property Name="ArticleToCategoryCreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ArticleToCategoryIsRemoved" Type="Int32" Nullable="false" />
+    <Property Name="ArticleToCategoryCategoryId" Type="Guid" Nullable="false" />
+    <Property Name="ArticleToCategoryArticleId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Article" Relationship="Self.FK__ArticleTo__Artic__47A6A41B" FromRole="ArticleToCategory" ToRole="Article" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__ArticleTo__Artic__46B27FE2" FromRole="ArticleToCategory" ToRole="Category" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Guid" Nullable="false" />
+    <Property Name="CategoryCreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CategoryIsRemoved" Type="Int32" Nullable="false" />
+    <Property Name="CategoryName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CategoryUserId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="ArticleToCategory" Relationship="Self.FK__ArticleTo__Artic__46B27FE2" FromRole="Category" ToRole="ArticleToCategory" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Category__Catego__40F9A68C" FromRole="Category" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="Guid" Nullable="false" />
+    <Property Name="CommentCreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CommentIsRemoved" Type="Int32" Nullable="false" />
+    <Property Name="CommentContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CommentUserId" Type="Guid" Nullable="false" />
+    <Property Name="CommentArticleId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Article" Relationship="Self.FK__Comment__Comment__4F47C5E3" FromRole="Comment" ToRole="Article" />
+    <NavigationProperty Name="User" Relationship="Self.FK__Comment__Comment__4E53A1AA" FromRole="Comment" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="UserCreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserIsRemoved" Type="Int32" Nullable="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserImagePath" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserFollowerCount" Type="Int32" Nullable="false" />
+    <Property Name="UserFollowingCount" Type="Int32" Nullable="false" />
+    <Property Name="UserBlogName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Article" Relationship="Self.FK__Article__Article__43D61337" FromRole="User" ToRole="Article" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Category__Catego__40F9A68C" FromRole="User" ToRole="Category" />
+    <NavigationProperty Name="Comment" Relationship="Self.FK__Comment__Comment__4E53A1AA" FromRole="User" ToRole="Comment" />
+    <NavigationProperty Name="UserAndFollowing" Relationship="Self.FK__UserAndFo__UserA__4A8310C6" FromRole="User" ToRole="UserAndFollowing" />
+    <NavigationProperty Name="UserAndFollowing1" Relationship="Self.FK__UserAndFo__UserA__4B7734FF" FromRole="User" ToRole="UserAndFollowing" />
+  </EntityType>
+  <EntityType Name="UserAndFollowing">
+    <Key>
+      <PropertyRef Name="UserAndFollowingId" />
+    </Key>
+    <Property Name="UserAndFollowingId" Type="Guid" Nullable="false" />
+    <Property Name="UserAndFollowingCreateDateTime" Type="DateTime" Precision="3" />
+    <Property Name="UserAndFollowingIsRemoved" Type="Int32" Nullable="false" />
+    <Property Name="UserAndFollowingUserId" Type="Guid" Nullable="false" />
+    <Property Name="UserAndFollowingFollowingId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__UserAndFo__UserA__4A8310C6" FromRole="UserAndFollowing" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="Self.FK__UserAndFo__UserA__4B7734FF" FromRole="UserAndFollowing" ToRole="User" />
+  </EntityType>
+  <Association Name="FK__Article__Article__43D61337">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="ArticleUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ArticleTo__Artic__47A6A41B">
+    <End Role="Article" Type="Self.Article" Multiplicity="1" />
+    <End Role="ArticleToCategory" Type="Self.ArticleToCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="ArticleId" />
+      </Principal>
+      <Dependent Role="ArticleToCategory">
+        <PropertyRef Name="ArticleToCategoryArticleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__Comment__4F47C5E3">
+    <End Role="Article" Type="Self.Article" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="ArticleId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="CommentArticleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ArticleTo__Artic__46B27FE2">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="ArticleToCategory" Type="Self.ArticleToCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="ArticleToCategory">
+        <PropertyRef Name="ArticleToCategoryCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Category__Catego__40F9A68C">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="CategoryUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comment__Comment__4E53A1AA">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="CommentUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserAndFo__UserA__4A8310C6">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserAndFollowing" Type="Self.UserAndFollowing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserAndFollowing">
+        <PropertyRef Name="UserAndFollowingUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserAndFo__UserA__4B7734FF">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserAndFollowing" Type="Self.UserAndFollowing" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserAndFollowing">
+        <PropertyRef Name="UserAndFollowingFollowingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BlogSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Article" EntityType="Self.Article" />
+    <EntitySet Name="ArticleToCategory" EntityType="Self.ArticleToCategory" />
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="UserAndFollowing" EntityType="Self.UserAndFollowing" />
+    <AssociationSet Name="FK__Article__Article__43D61337" Association="Self.FK__Article__Article__43D61337">
+      <End Role="User" EntitySet="User" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ArticleTo__Artic__47A6A41B" Association="Self.FK__ArticleTo__Artic__47A6A41B">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="ArticleToCategory" EntitySet="ArticleToCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__Comment__4F47C5E3" Association="Self.FK__Comment__Comment__4F47C5E3">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ArticleTo__Artic__46B27FE2" Association="Self.FK__ArticleTo__Artic__46B27FE2">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="ArticleToCategory" EntitySet="ArticleToCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Category__Catego__40F9A68C" Association="Self.FK__Category__Catego__40F9A68C">
+      <End Role="User" EntitySet="User" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comment__Comment__4E53A1AA" Association="Self.FK__Comment__Comment__4E53A1AA">
+      <End Role="User" EntitySet="User" />
+      <End Role="Comment" EntitySet="Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserAndFo__UserA__4A8310C6" Association="Self.FK__UserAndFo__UserA__4A8310C6">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserAndFollowing" EntitySet="UserAndFollowing" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserAndFo__UserA__4B7734FF" Association="Self.FK__UserAndFo__UserA__4B7734FF">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserAndFollowing" EntitySet="UserAndFollowing" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

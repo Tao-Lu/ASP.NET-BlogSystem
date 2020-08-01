@@ -1,0 +1,12 @@
+D:\github\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\BlogSystem.Models.dll.config
+D:\github\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\BlogSystem.Models.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\BlogSystem.Models.pdb
+D:\github\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\EntityFramework.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\EntityFramework.xml
+D:\github\BlogSystem\BlogSystem\BlogSystem.Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\github\BlogSystem\BlogSystem\BlogSystem.Models\obj\Debug\BlogSystem.Models.csprojAssemblyReference.cache
+D:\github\BlogSystem\BlogSystem\BlogSystem.Models\obj\Debug\BlogSystem.Models.csproj.CoreCompileInputs.cache
+D:\github\BlogSystem\BlogSystem\BlogSystem.Models\obj\Debug\BlogSystem.Models.csproj.CopyComplete
+D:\github\BlogSystem\BlogSystem\BlogSystem.Models\obj\Debug\BlogSystem.Models.dll
+D:\github\BlogSystem\BlogSystem\BlogSystem.Models\obj\Debug\BlogSystem.Models.pdb
